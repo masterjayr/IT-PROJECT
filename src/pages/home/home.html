@@ -1,0 +1,38 @@
+<ion-header>
+  <ion-navbar color = "primary">
+    <ion-title>
+      GPS TRACKING 
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <button ion-button full icon-left (click)="startTracking()" *ngIf = "!isTracking">
+    <ion-icon name = "locate"></ion-icon>
+  Start Tracking
+  </button>
+
+  <button ion-button full icon-left (click)="stopTracking()" *ngIf = "isTracking">
+    <ion-icon name = "hand"></ion-icon>
+    Stop Tracking
+  </button>
+
+  <!-- <ion-fab right bottom> -->
+    <button ion-button full color="light" (click)="StartVoiceCurrentLocation()" *ngIf = "hasStop">
+      Location
+      <ion-icon name="volume-up"></ion-icon>
+    </button>
+  <!-- </ion-fab> -->
+
+  <!-- <button ion-button full (click)="StopVoiceCurrentLocation()"  *ngIf = "hasStop">Stop Voice</button> -->
+
+  <div #map id = "map"></div>
+
+  <ion-list>
+    <ion-list-header>Previous Tracks</ion-list-header>
+    <ion-item *ngFor = "let route of previousTracks">
+      {{route.finished | date}}, {{route.path.length}} Waypoints
+      <button ion-button clear item-end (click)="showHistoryRoute(route.path)">View Route</button>
+    </ion-item>
+  </ion-list>
+</ion-content>

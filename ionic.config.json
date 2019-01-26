@@ -1,0 +1,7 @@
+{
+  "name": "Tracker",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular"
+}
